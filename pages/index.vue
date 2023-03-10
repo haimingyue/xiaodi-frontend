@@ -1,13 +1,12 @@
+<script lang="ts" setup>
+import { useUser } from '../composables/user';
+
+const { count, add, multiplyCount } = $(useUser())
+</script>
 <template>
-  <div class="home" @click="handleClick">
-      <div wh-300 bg-blue font-600 color-red flexc>小滴课堂</div>
-      <a-button type="primary" bg-red!>按钮</a-button>
+  <div class="home">
+    <h2 @click="add">改变count的值</h2>
+    <h2>action:{{ count }}</h2>
+    <h2>getters:{{ multiplyCount }}</h2>
   </div>
 </template>
-
-<script setup>
-
-</script>
-
-<style scoped>
-</style>

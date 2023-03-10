@@ -4,7 +4,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ['@unocss/nuxt'],
+    modules: ['@unocss/nuxt', '@pinia/nuxt'],
     unocss: {
         uno: true,
         attributify: true,
