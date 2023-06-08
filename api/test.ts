@@ -1,3 +1,3 @@
-export const test = async function () {
-  return await useApi("/test");
-};
+// export const test = async function () {
+//   return await useApi("/test");
+// };
