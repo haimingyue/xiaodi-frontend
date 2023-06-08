@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+const { changeToFinish } = $(useModel());
 </script>
 
 <template>
@@ -28,9 +28,7 @@
         <a-input placeholder="请输入手机号或邮箱验证码">
           <template #suffix>
             <div>
-              <a-button type="link" size="small" p0>
-                获取验证码
-              </a-button>
+              <a-button type="link" size="small" p0> 获取验证码 </a-button>
             </div>
           </template>
         </a-input>
@@ -42,14 +40,33 @@
           <a-checkbox>
             <div flexc items-center text-13px>
               <div>同意小滴课堂</div>
-              <a size="small" type="link" text-13px p0 m0 href="/" color="#169bd5">《隐私策略》</a>
+              <a
+                size="small"
+                type="link"
+                text-13px
+                p0
+                m0
+                href="/"
+                color="#169bd5"
+                >《隐私策略》</a
+              >
             </div>
           </a-checkbox>
         </a-form-item>
       </div>
 
       <a-form-item>
-        <button type="submit" btn center-text-36 w-300px rounded-full bg="#4d555d" text-white cursor-pointer>
+        <button
+          type="submit"
+          btn
+          center-text-36
+          w-300px
+          rounded-full
+          bg="#4d555d"
+          text-white
+          cursor-pointer
+          @click="changeToFinish"
+        >
           立即注册
         </button>
       </a-form-item>
@@ -60,8 +77,18 @@
       <span color="#555555">—更多登录方式—</span>
       <o-auth mb-8px />
     </div>
-    <div absolute bottom-0 left-0 w-400px h-44px flexc style="background-color: rgba(77, 85, 93, 0.1)">
-      <span select-none absolute z-100 color="#404040">已有账号？<span text-btn color="#5ebae2">登录</span></span>
+    <div
+      absolute
+      bottom-0
+      left-0
+      w-400px
+      h-44px
+      flexc
+      style="background-color: rgba(77, 85, 93, 0.1)"
+    >
+      <span select-none absolute z-100 color="#404040"
+        >已有账号？<span text-btn color="#5ebae2">登录</span></span
+      >
     </div>
   </div>
 </template>

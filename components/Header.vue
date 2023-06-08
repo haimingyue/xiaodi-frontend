@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-
+const { registerModel } = $(useModel());
 </script>
 
 <template>
@@ -18,7 +17,7 @@
       <div>
         <div class="login-or-registry" flexc>
           <span mr-8>登录</span>
-          <span class="register">
+          <span @click="registerModel.base = true" class="register">
             注册
           </span>
         </div>
@@ -27,6 +26,7 @@
     <RegModal>
       <RegisterBase></RegisterBase>
     </RegModal>
+    <RegisterFinish></RegisterFinish>
   </div>
 </template>
 
@@ -83,7 +83,7 @@
     color: orange;
   }
 
-  &>* {
+  & > * {
     cursor: pointer;
     user-select: none;
   }

@@ -15,6 +15,7 @@
     "pinia-plugin-persistedstate": "^2.2.0"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "6.1.0",
     "ant-design-vue": "3.2.13",
     "pinia": "^2.0.22",
     "unplugin-vue-components": "0.22.8"

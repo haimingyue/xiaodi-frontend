@@ -1,17 +1,22 @@
 <script lang="ts" setup>
-
+const { registerModel } = $(useModel());
 </script>
 
 <template>
-  <div class="reg-modal">
+  <div class="reg-modal" v-if="registerModel.base">
     <div class="bg">
       <div class="content wfull flex">
         <!-- 背景图 -->
-        <div class="bg-img flexc flex-col" :style="{ background: `url('images/svg/log_reg_bg.svg') no-repeat` }">
+        <div
+          class="bg-img flexc flex-col"
+          :style="{ background: `url('images/svg/log_reg_bg.svg') no-repeat` }"
+        >
           <div absolute z-100 flexc flex-col>
             <img src="/images/logo_footer.png" w-140px h-55px />
             <div b="b white" m="t-6px b-10px" w-200px></div>
-            <span text-white text-16px font-600 tracking-10px ml-8px text-center>让技术不再难学习</span>
+            <span text-white text-16px font-600 tracking-10px ml-8px text-center
+              >让技术不再难学习</span
+            >
           </div>
         </div>
 
@@ -19,7 +24,11 @@
         <div pt-36px px-50px flex="~ col" w-400px relative>
           <div justify-between flex wfull>
             <span text-20px font-600 color="#404040">快速注册</span>
-            <img src="/images/svg/close_icon.svg" class="cursor-pointer select-none w-20px! h-20px!" />
+            <img
+              @click="registerModel.base = false"
+              src="/images/svg/close_icon.svg"
+              class="cursor-pointer select-none w-20px! h-20px!"
+            />
           </div>
           <slot />
         </div>
@@ -67,7 +76,7 @@
   color: white;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 240px;
     height: 100%;
