@@ -1,5 +1,20 @@
 <script setup lang="ts">
 const { registerModel } = $(useModel());
+
+// 定义初始的表单数据
+const registerCurrent = reactive({
+  phone: "",
+  captcha: "",
+  code: "",
+  accept: false,
+});
+
+const onCancel = () => {
+  registerCurrent.phone = "";
+  registerCurrent.captcha = "false";
+  registerCurrent.code = "";
+  registerCurrent.accept = false;
+};
 </script>
 
 <template>
@@ -23,8 +38,8 @@ const { registerModel } = $(useModel());
         </div>
       </div>
     </div>
-    <RegModal>
-      <RegisterBase></RegisterBase>
+    <RegModal @cancel="onCancel">
+      <RegisterBase :registerCurrent="registerCurrent"></RegisterBase>
     </RegModal>
     <RegisterFinish></RegisterFinish>
   </div>

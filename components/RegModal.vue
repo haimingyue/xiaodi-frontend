@@ -1,5 +1,12 @@
 <script lang="ts" setup>
 const { registerModel } = $(useModel());
+
+const emit = defineEmits(["cancel"]);
+
+const cancelRegModel = () => {
+  registerModel.base = false;
+  emit("cancel");
+};
 </script>
 
 <template>
