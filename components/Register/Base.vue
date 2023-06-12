@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { message } from "ant-design-vue";
+import { sendCode } from "~/api/notify";
+import { register } from "~/api/account";
 const { changeToFinish } = $(useModel());
 
 const { registerCurrent } = defineProps<{
@@ -23,7 +25,7 @@ const resetCaptcha = () => {
   }
 };
 
-const getCode = () => {
+const getCode = async () => {
   if (registerCurrent.phone) {
     // phone的正则表达式，详细一点的
     const phoneReg = /^1[3-9]\d{9}$/; // 1开头，第二位是3-9，后面9位是0-9的数字
@@ -45,9 +47,19 @@ const getCode = () => {
   /**
    * 手机验证码接口调用
    */
-  isDisabled = true;
-  countDownFun();
-  message.success("发送手机验证码成功");
+  const data = await sendCode(
+    registerCurrent.phone,
+    registerCurrent.captcha,
+    "register"
+  );
+
+  if (data.code === 0) {
+    isDisabled = true;
+    countDownFun();
+    message.success("发送手机验证码成功");
+  } else {
+    resetCaptcha();
+  }
 };
 
 // 验证码倒计时
@@ -66,7 +78,7 @@ const countDownFun = () => {
 };
 
 // 立即注册
-const onRegisterClick = () => {
+const onRegisterClick = async () => {
   if (!registerCurrent.code) {
     message.error("请输入手机验证码");
     return;
@@ -76,8 +88,16 @@ const onRegisterClick = () => {
     message.error("请同意隐私协议");
     return;
   }
-  clearInfo();
-  changeToFinish();
+  const data = await register({
+    code: registerCurrent.code,
+    phone: registerCurrent.phone,
+  });
+  if (data.code === 0) {
+    clearInfo();
+    changeToFinish();
+  } else {
+    resetCaptcha();
+  }
 };
 
 const onFinish = () => {
@@ -182,7 +202,6 @@ onBeforeUnmount(() => {
           bg="#4d555d"
           text-white
           cursor-pointer
-          @click="changeToFinish"
         >
           立即注册
         </button>

@@ -32,7 +32,7 @@ const cancelRegModel = () => {
           <div justify-between flex wfull>
             <span text-20px font-600 color="#404040">快速注册</span>
             <img
-              @click="registerModel.base = false"
+              @click="cancelRegModel"
               src="/images/svg/close_icon.svg"
               class="cursor-pointer select-none w-20px! h-20px!"
             />

@@ -10,8 +10,9 @@ const registerCurrent = reactive({
 });
 
 const onCancel = () => {
+  console.log("cancel");
   registerCurrent.phone = "";
-  registerCurrent.captcha = "false";
+  registerCurrent.captcha = "";
   registerCurrent.code = "";
   registerCurrent.accept = false;
 };
