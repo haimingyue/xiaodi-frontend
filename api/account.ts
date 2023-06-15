@@ -4,7 +4,7 @@
  */
 
 export const register = async (options: { code: string; phone: string }) => {
-  return await useApi("/user/v1/register", {
+  return await useApi<null>("/user/v1/register", {
     method: "POST",
     body: {
       code: options.code,

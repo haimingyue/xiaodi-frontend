@@ -1,6 +1,7 @@
 import { $fetch } from "ohmyfetch";
 import type { FetchRequest, FetchOptions } from "ohmyfetch";
 import { message } from "ant-design-vue";
+import { IApiBase } from "../types/api";
 
 export const baseUrl = "http://127.0.0.1:8081/api";
 
@@ -22,10 +23,9 @@ const _useApi = $fetch.create({
   },
 });
 
-export const useApi = async function (
+export const useApi = async <T = any>(
   request: FetchRequest,
   options?: FetchOptions<"json">
-) {
-  console.log("request", request);
-  return await _useApi(request, options);
+) => {
+  return await _useApi<IApiBase<T>>(request, options);
 };

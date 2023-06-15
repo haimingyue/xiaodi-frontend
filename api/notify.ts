@@ -10,7 +10,7 @@ export const sendCode = async (
   captcha: string,
   type: "login" | "register"
 ) => {
-  return await useApi("/notify/v1/send_code", {
+  return await useApi<null>("/notify/v1/send_code", {
     method: "POST",
     body: {
       phone,
