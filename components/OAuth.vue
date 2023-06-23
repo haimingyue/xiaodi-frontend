@@ -1,10 +1,15 @@
 <script setup lang="ts">
-
+const { wechatModel } = $(useModel());
 </script>
 
 <template>
   <div class="oAuthLogin">
-    <img src="/images/wechat_icon.png" w-70px h-70px />
+    <img
+      @click="wechatModel = true"
+      src="/images/wechat_icon.png"
+      w-70px
+      h-70px
+    />
   </div>
 </template>
 
@@ -16,7 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  &>* {
+  & > * {
     padding: 8px;
     margin: 0 20px;
     cursor: pointer;

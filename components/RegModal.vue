@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-const { registerModel } = $(useModel());
+let { registerModel, wechatModel } = $(useModel());
 
 const emit = defineEmits(["cancel"]);
 
 const cancelRegModel = () => {
   registerModel.base = false;
+  wechatModel = false;
   emit("cancel");
 };
 </script>

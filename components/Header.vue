@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { registerModel } = $(useModel());
+const { registerModel, wechatModel } = $(useModel());
 
 // 定义初始的表单数据
 const registerCurrent = reactive({
@@ -40,7 +40,10 @@ const onCancel = () => {
       </div>
     </div>
     <RegModal @cancel="onCancel">
-      <RegisterBase :registerCurrent="registerCurrent"></RegisterBase>
+      <!-- 微信扫码 -->
+      <WechatCode v-if="wechatModel"></WechatCode>
+      <!-- 注册初始表单  -->
+      <RegisterBase v-else :registerCurrent="registerCurrent"></RegisterBase>
     </RegModal>
     <RegisterFinish></RegisterFinish>
   </div>
