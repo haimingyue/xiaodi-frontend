@@ -16,6 +16,8 @@ const _useApi = $fetch.create({
   async onResponse({ response }) {
     const data = response._data;
     if (data.code !== 0) {
+      if (data.code === 270004) return;
+      if (data.code === 250004) return;
       message.error(data.msg);
     }
     // 接口请求异常捕获
